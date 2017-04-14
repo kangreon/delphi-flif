@@ -10,3 +10,7 @@ This component can be used in both graphical and console applications
 * In graphics applications: load and display images on the screen using visual component TImage.
 * In console applications: directly work with class TFlifImage = class (TGraphics).
 
+# License
+All source code is distributed under license **GNU General Public License v3.0**. See [LICENSE](LICENSE) file.
+
+All images are licensed **CC0 1.0 Universal (CC0 1.0)**.

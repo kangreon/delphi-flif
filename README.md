@@ -11,6 +11,6 @@ This component can be used in both graphical and console applications
 * In console applications: directly work with class TFlifImage = class (TGraphics).
 
 # License
-All source code is distributed under license **GNU General Public License v3.0**. See [LICENSE](LICENSE) file.
+All source code is distributed under license **GNU Lesser General Public License v3.0**. See [LICENSE](LICENSE) file.
 
 All images are licensed **CC0 1.0 Universal (CC0 1.0)**.

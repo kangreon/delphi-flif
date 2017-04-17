@@ -1,0 +1,10 @@
+1. Открыть с помощью RadStudio Delphi XE7 группу проектов FLIF.groupproj
+2. Для пакетов libflif.bpl и flifgraphics.bpl установить "Build Configurations" = Debug
+3. Выполнить установку пакета libflif.bpl а затем flifgraphics.bpl
+4. Перейти в Tools - Options... - Environment Options - Delphi Options - Library
+5. Добавить в "Library path" путь к скомпилированным DCU файлам. Например "D:\Delphi\delphi-flif\Win32\Debug\"
+6. Добавить в "Browsing path" путь к исходникам libflif. Например "D:\Delphi\delphi-flif\src\"
+7. Выполнить сборку и запуск проекта testFLIF
+8. Выполнить тестирование запущенного приложения нажав на кнопку "Test!"
+9. Перейти в папку с полученными изображениями и проверить их правильность. Например "D:\Delphi\delphi-flif\Win32\Debug\{BMP,FLIF,JPEG,PNG}-OUT"
+10. Установить другой способ сборке (Debug, Release, 32-bit, 64-bit) и перейти к пункту 7

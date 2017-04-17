@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{30EFEE6E-47A2-40CC-9511-5491CEFDD0B7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="libflif.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="flifgraphics.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="testFLIF.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="libflif">
+        <MSBuild Projects="libflif.dproj"/>
+    </Target>
+    <Target Name="libflif:Clean">
+        <MSBuild Projects="libflif.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="libflif:Make">
+        <MSBuild Projects="libflif.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="flifgraphics">
+        <MSBuild Projects="flifgraphics.dproj"/>
+    </Target>
+    <Target Name="flifgraphics:Clean">
+        <MSBuild Projects="flifgraphics.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="flifgraphics:Make">
+        <MSBuild Projects="flifgraphics.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="testFLIF">
+        <MSBuild Projects="testFLIF.dproj"/>
+    </Target>
+    <Target Name="testFLIF:Clean">
+        <MSBuild Projects="testFLIF.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="testFLIF:Make">
+        <MSBuild Projects="testFLIF.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="libflif;flifgraphics;testFLIF"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="libflif:Clean;flifgraphics:Clean;testFLIF:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="libflif:Make;flifgraphics:Make;testFLIF:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

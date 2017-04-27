@@ -67,6 +67,9 @@ begin
 end;
 ```
 
+# Example GUI
+[Screenshot](/Images/GUI/screenshot.png)
+
 # License
 All source code is distributed under license **GNU Lesser General Public License v3.0**. See [LICENSE](LICENSE) file.
 

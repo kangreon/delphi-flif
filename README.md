@@ -10,6 +10,19 @@ This component can be used in both graphical and console applications
 * In graphics applications: load and display images on the screen using visual component TImage.
 * In console applications: directly work with class TFlifImage = class (TGraphics).
 
+# Features
+* Loads and saves FLIF images: GRB GRBA PALETTE GRAY HDR(GRBA16)
+* Draws the loaded image on TCanvas
+* Show FLIF image on TImage
+* Gets the FLIF image from:
+  * TBitmap (Gray, Palette, rgb888, rgba8888)
+  * TJpegImage (Gray (8 bits palette), rgb (24 bits))
+  * TPngImage (Gray (8 bits), Palette (8 bits), rgb, rgba, rgba (64 bits))
+* Converts a FLIF image to:
+  * TBitmap
+  * TJpegImage
+  * TPngImage (except rgba (64 bits))
+
 # License
 All source code is distributed under license **GNU Lesser General Public License v3.0**. See [LICENSE](LICENSE) file.
 

@@ -35,6 +35,9 @@ type
   FLIF_ENCODER = Pointer;
   TFLIFEncoder = FLIF_ENCODER;
 
+  TFLIFDecoderCallback = function(Quality: UInt32; BytesRead: Int64;
+    DecodeOver: UInt8; UserData, Context: Pointer): UInt32; cdecl;
+
 const
   LIBRARY_FLIF = 'libflif.dll';
 
@@ -120,7 +123,7 @@ procedure flif_free_memory(Buffer: Pointer); cdecl external LIBRARY_FLIF;
 
 ///
 ///  flif_dec.h
-///  11d73ae on 6 Sep 2016
+///  5371f40 on 19 Apr 2017
 ///
 
 /// <summary>
@@ -158,6 +161,7 @@ function flif_decoder_num_loops(Decoder: TFLIFDecoder): Int32; cdecl external LI
 /// </summary>
 function flif_decoder_get_image(Decoder: TFLIFDecoder; Index: NativeUInt): TFLIFImagePointer; cdecl external LIBRARY_FLIF;
 
+procedure flif_decoder_generate_preview(Context: Pointer); cdecl external LIBRARY_FLIF;
 
 /// <summary>
 ///   release an decoder (has to be called after decoding is done, to avoid memory leaks)
@@ -193,18 +197,18 @@ procedure flif_decoder_set_scale(Decoder: TFLIFDecoder; Scale: UInt32); cdecl ex
 procedure flif_decoder_set_resize(Decoder: TFLIFDecoder; Width, Height: UInt32); cdecl external LIBRARY_FLIF;
 procedure flif_decoder_set_fit(Decoder: TFLIFDecoder; Width, Height: UInt32); cdecl external LIBRARY_FLIF;
 
-type
-  TFLIFDecoderCallback = function(Quality: Int32; BytesRead: Int64): UInt32; cdecl;
-
 /// <summary>
 ///   Progressive decoding: set a callback function. The callback will be called
 ///  after a certain quality is reached, and it should return the desired next
 ///  quality that should be reached before it will be called again.
 ///  The qualities are expressed on a scale from 0 to 10000 (not 0 to 100!) for
 ///  fine-grained control.
+///  `user_data` can be NULL or a pointer to any user-defined context. The
+///  decoder doesn't care about its contents;
+///  it just passes the pointer value back to the callback.
 /// </summary>
 procedure flif_decoder_set_callback(Decoder: TFLIFDecoder;
-  CallbackFunction: TFLIFDecoderCallback); cdecl external LIBRARY_FLIF;
+  CallbackFunction: TFLIFDecoderCallback; UserData: Pointer); cdecl external LIBRARY_FLIF;
 
 /// <summary>
 ///   valid quality: 0-10000

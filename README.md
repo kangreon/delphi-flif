@@ -35,6 +35,38 @@ This component can be used in both graphical and console applications
 8. Go to the folder with the images and check that they are correct. For example, `D:\Delphi\delphi-flif\Win32\Debug\{BMP,FLIF,JPEG,PNG}-OUT`.
 9. Choose another way to build (Debug, Release, 32-bit, 64-bit) and go to step 7.
 
+# Example
+```pascal
+uses
+  FLIFImage;
+  
+procedure ExampleLoadAndDraw(Canvas: TCanvas);
+var
+  Image: TFlifImage;
+begin
+  Image := TFlifImage.Create;
+  try
+    Image.LoadFromFile('image.flif');
+    Canvas.Draw(0, 0, Image);
+  finally
+    Image.Free;
+  end;
+end;
+
+procedure ExampleAssignAndSave(PngImage: TPngImage);
+var
+  Image: TFlifImage;
+begin
+  Image := TFlifImage.Create;
+  try
+    Image.Assign(PngImage);
+    Image.SaveToFile('image.flif');
+  finally
+    Image.Free;
+  end;
+end;
+```
+
 # License
 All source code is distributed under license **GNU Lesser General Public License v3.0**. See [LICENSE](LICENSE) file.
 
